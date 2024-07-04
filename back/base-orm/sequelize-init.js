@@ -202,9 +202,64 @@ const deudores = sequelize.define('deudores', {
 
 );
 
+const infracciones = sequelize.define('infracciones', {
+  IdInfraccion: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  Dni: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        args: true,
+        msg: "DNI es requerido",
+      },
+      len: {
+        args: [5, 60],
+        msg: "DNI debe ser tipo caracteres, entre 5 y 50 de longitud",
+      },
+    },
+  },
+  Fecha: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+    notNull: {
+      args: true,
+      msg: "Fecha es requerido",
+    }
+  },
+  Importe: {
+    type: DataTypes.FLOAT,
+    notNull: {
+      args: true,
+      msg: "Importe es requerido",
+    },
+  },
+  Lugar: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        args: true,
+        msg: "Lugar es requerido",
+      },
+      len: {
+        args: [5, 60],
+        msg: "Lugar debe ser tipo caracteres, entre 5 y 50 de longitud",
+      },
+    },
+  },
+}, {
+  // No incluir timestamps
+  timestamps: false,
+});
+
 module.exports = {
   sequelize,
   articulosfamilias,
   articulos,
-  deudores
+  deudores,
+  infracciones
 };

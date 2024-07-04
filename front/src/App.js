@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { Articulos } from "./components/articulos/Articulos";
 import { ModalDialog } from "./components/ModalDialog";
 import { Deudores } from "./components/deudores/Deudores";
+import { Infracciones } from "./components/infracciones/Infracciones";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/articulosfamilias" element={<ArticulosFamilias />} />
             <Route path="/articulos" element={<Articulos />} />
             <Route path="*" element={<Navigate to="/inicio" replace />} />
+            <Route path="/Infracciones" element={<Infracciones />} />
           </Routes>
         </div>
         <Footer />
