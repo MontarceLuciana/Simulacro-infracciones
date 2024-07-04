@@ -6,6 +6,7 @@ export default function Registro({
   Item,
   Grabar,
   Volver,
+  Limpiar
 }) {
   const {
     register,
@@ -21,6 +22,11 @@ export default function Registro({
   const handleVolver = () => {
     reset();
     Volver();
+  };
+ 
+  const handleLimpiar = () => {
+    reset(Item); // Resetear el formulario con los valores iniciales de Item
+    Limpiar();   // Llamar a la función Limpiar adicionalmente si es necesario
   };
 
   return (
@@ -164,8 +170,17 @@ export default function Registro({
               onClick={handleVolver}
             >
               <i className="fa fa-undo"></i>
-              {AccionABMC === "C" ? " Volver" : "Limpiar"}
+              {AccionABMC === "C" ? " Volver" : "Volver"}
             </button>
+
+            <button
+              type="button"
+              className="btn btn-secondary mx-1"
+              onClick={handleLimpiar}
+            >
+              <i className="fa fa-undo"></i> Limpiar
+            </button>
+            
           </div>
         </div>
 

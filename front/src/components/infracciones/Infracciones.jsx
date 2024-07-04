@@ -90,6 +90,21 @@ function Infracciones() {
     setAccionABMC("L");
   }
 
+  function Limpiar() {
+    try {
+      setItem({
+        Dni: "",
+        Fecha: "",
+        Importe: "",
+        Lugar: "",
+      });
+    } catch (error) {
+      modalDialogService.Alert(
+        error?.response?.data?.message ?? error.toString()
+      );
+    }
+  }
+
   return (
     <div>
       <div className="tituloPagina">
@@ -127,7 +142,7 @@ function Infracciones() {
       {/* Formulario de alta/modificación/consulta */}
       {AccionABMC !== "L" && (
         <Registro
-        {...{ AccionABMC, Item, Grabar, Volver }}
+        {...{ AccionABMC, Item, Grabar, Volver, Limpiar }}
         />
       )}
     </div>
